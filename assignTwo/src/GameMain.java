@@ -1,6 +1,15 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 
@@ -26,7 +35,7 @@ public class GameMain extends JPanel implements MouseListener{
 	// the game board 
 	private Board board;
 	 	 
-	//TODO: create the enumeration for the variable below (GameState currentState)
+	//DONE: create the enumeration for the variable below (GameState currentState)
 	//HINT all of the states you require are shown in the code within GameMain
 	private GameState currentState; 
 	
@@ -39,8 +48,8 @@ public class GameMain extends JPanel implements MouseListener{
 	/** Constructor to setup the UI and game components on the panel */
 	public GameMain() {   
 		
-		// TODO: This JPanel fires a MouseEvent on MouseClicked so add required event listener to 'this'.          
-	    
+		// Done Added Mouse Listener: This JPanel fires a MouseEvent on MouseClicked so add required event listener to 'this'.          
+	    addMouseListener(this);
 	    
 		// Setup the status bar (JLabel) to display status message       
 		statusBar = new JLabel("         ");       
@@ -56,10 +65,13 @@ public class GameMain extends JPanel implements MouseListener{
 		setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT + 30));
 		
 		
-		// TODO: Create a new instance of the game "Board"class. HINT check the variables above for the correct name
-
+		//Done: Create a new instance of the game "Board"class. HINT check the variables above for the correct name
+		board =new Board();
 		
-		//TODO: call the method to initialise the game board
+		//Done call the initGame method form the GameMain Class
+		//: call the method to initialise the game board
+		initGame();
+
 
 	}
 	
@@ -70,12 +82,15 @@ public class GameMain extends JPanel implements MouseListener{
 				//create a main window to contain the panel
 				JFrame frame = new JFrame(TITLE);
 				
-				//TODO: create the new GameMain panel and add it to the frame
-						
+				//Done created an instance of the GameMain then added it to the JFrame
+				//: create the new GameMain panel and add it to the frame
+				GameMain gameMain = new GameMain();
+				frame.add(gameMain);		
 				
 				
-				//TODO: set the default close operation of the frame to exit_on_close
-		            
+				//DONE: set the default close operation of the frame to exit_on_close
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				
 				
 				frame.pack();             
 				frame.setLocationRelativeTo(null);
