@@ -1,3 +1,4 @@
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,9 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-
 public class GameMain extends JPanel implements MouseListener{
+	
+	
+	
+	
+	
 	//Constants for game 
+
 	// number of ROWS by COLS cell constants 
 	public static final int ROWS = 3;     
 	public static final int COLS = 3;  
@@ -110,14 +116,14 @@ public class GameMain extends JPanel implements MouseListener{
 		if (currentState == GameState.Playing) {          
 			statusBar.setForeground(Color.BLACK);          
 			if (currentPlayer == Player.Cross) {   
-			
+				//DONE changed the text in the status bar to say if its X's turn
 				//TODO: use the status bar to display the message "X"'s Turn
-
+				statusBar.setText("X's Turn");
 				
 			} else {    
-				
+				// DONE changed the text in the status bar to say its O's turn for the else statement
 				//TODO: use the status bar to display the message "O"'s Turn
-
+				statusBar.setText("O's Turn");
 				
 			}       
 			} else if (currentState == GameState.Draw) {          
@@ -154,17 +160,24 @@ public class GameMain extends JPanel implements MouseListener{
 		public void updateGame(Player thePlayer, int row, int col) {
 			//check for win after play
 			if(board.hasWon(thePlayer, row, col)) {
-				
+				// DONE changed the game state using a if statement to say if X or O has won
 				// TODO: check which player has won and update the currentstate to the appropriate gamestate for the winner
-
+				if(thePlayer == Player.Cross) {
+			        currentState = GameState.Cross_won;
+			    } else if (currentPlayer.equals(Player.Nought))
+					currentState = GameState.Nought_won;
+				
+			    
 				
 			} else 
 				if (board.isDraw ()) {
-					
-				// TODO: set the currentstate to the draw gamestate
 
+				// Done chaged the game state if it is a draw to Draw	
+				// TODO: set the currentstate to the draw gamestate
+					 currentState = GameState.Draw;
 			}
-			//otherwise no change to current state of playing
+			//otherwise no change to current state of playing/
+			
 		}
 		
 				
@@ -198,9 +211,16 @@ public class GameMain extends JPanel implements MouseListener{
 			// game over and restart              
 			initGame();            
 		}   
+		//DONE used repaint to change the board after the mouse event has happened
+		//TODO: redraw the graphics on the UI 
+		repaint();
 		
-		//TODO: redraw the graphics on the UI          
-           
+		
+		
+
+		
+		
+		
 	}
 		
 	
