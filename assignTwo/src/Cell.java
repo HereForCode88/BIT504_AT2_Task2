@@ -11,7 +11,7 @@ public class Cell {
 	
 	/** Constructor to initialise this cell with the specified row and col */
 	public Cell(int row, int col) {
-		
+		//DONE used this statement to set the varibles from the parameters 
 		// TODO: Initialise the variables row, col 
 
 		
@@ -19,7 +19,7 @@ public class Cell {
 		    this.col = col;
 		  
 		
-		
+		//DONE called the clear method
 		//TODO: call the method that sets the cell content to EMPTY
 		    clear();
 	}
@@ -48,7 +48,7 @@ public class Cell {
 	
 	/** Set this cell's content to EMPTY */
 	public void clear() {
-		
+		//DONE set the value of content to Empty using the Player enum
 		// TODO: Set the value of content to Empty (Remember this is an enum)
 		content = Player.Empty;
 		
